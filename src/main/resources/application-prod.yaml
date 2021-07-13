@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://master:3306/admin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mongs123
+
+  redis:
+    host: master
+    port: 6379
+    password: mongs123
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: false
