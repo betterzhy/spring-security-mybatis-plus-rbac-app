@@ -11,7 +11,7 @@ public class ApiResponse<T> implements Serializable {
     private String message;
     private T data;
 
-    public ApiResponse(boolean success, int code, String message, T data) {
+    public ApiResponse(boolean success, Integer code, String message, T data) {
         this.success = success;
         this.code = code;
         this.message = message;
