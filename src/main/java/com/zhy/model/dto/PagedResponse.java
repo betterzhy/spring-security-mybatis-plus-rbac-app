@@ -17,7 +17,7 @@ public class PagedResponse<T> {
 
     }
 
-    public PagedResponse(List<T> content, long pageNum, long pageSize, long totalElements, long totalPages, boolean last) {
+    public PagedResponse(List<T> content, Long pageNum, Long pageSize, Long totalElements, Long totalPages, Boolean last) {
         this.content = content;
         this.pageNum = pageNum;
         this.pageSize = pageSize;
