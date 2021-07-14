@@ -25,7 +25,7 @@ public class RestAccessDeniedHandler implements AccessDeniedHandler {
         LOGGER.error(e.getMessage());
         rep.setCharacterEncoding("UTF-8");
         rep.setContentType("application/json");
-        rep.getWriter().println(JSONUtil.toJsonStr(ApiResponse.bad(403, e.getMessage())));
+        rep.getWriter().println(JSONUtil.toJsonStr(ApiResponse.forbidden(e.getMessage())));
         rep.getWriter().flush();
     }
 }

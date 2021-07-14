@@ -19,19 +19,23 @@ public class ApiResponse<T> implements Serializable {
     }
 
     public static <T> ApiResponse<T> ok(String message) {
-        return new ApiResponse<>(true, 200, message, null);
+        return new ApiResponse<>(true, ResponseCode.OK, message, null);
     }
 
     public static <T> ApiResponse<T> ok(String message, T data) {
-        return new ApiResponse<>(true, 200, message, data);
+        return new ApiResponse<>(true, ResponseCode.OK, message, data);
     }
 
     public static <T> ApiResponse<T> bad(String message) {
-        return new ApiResponse<>(false, 500, message, null);
+        return new ApiResponse<>(false, ResponseCode.BAD, message, null);
     }
 
-    public static <T> ApiResponse<T> bad(int code, String message) {
-        return new ApiResponse<>(false, code, message, null);
+    public static <T> ApiResponse<T> unauthorized(String message) {
+        return new ApiResponse<>(false, ResponseCode.UNAUTHORIZED, message, null);
+    }
+
+    public static <T> ApiResponse<T> forbidden(String message) {
+        return new ApiResponse<>(false, ResponseCode.FORBIDDEN, message, null);
     }
 
     public boolean isSuccess() {
@@ -65,4 +69,11 @@ public class ApiResponse<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
+}
+
+interface ResponseCode {
+    int OK = 200;
+    int BAD = 500;
+    int UNAUTHORIZED = 401;
+    int FORBIDDEN = 403;
 }
