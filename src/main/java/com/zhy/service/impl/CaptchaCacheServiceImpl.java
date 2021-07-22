@@ -20,19 +20,19 @@ public class CaptchaCacheServiceImpl implements CaptchaCacheService {
 
     @Override
     public void set(String captchaId, String captcha) {
-        String key = AppConstants.CAPTCHA_REDIS_KEY_PREFIX + ":" + captchaId;
+        String key = AppConstants.REDIS_KEY_PREFIX_CAPTCHA + ":" + captchaId;
         redisHelper.set(key, captcha, expiration);
     }
 
     @Override
     public String get(String captchaId) {
-        String key = AppConstants.CAPTCHA_REDIS_KEY_PREFIX + ":" + captchaId;
+        String key = AppConstants.REDIS_KEY_PREFIX_CAPTCHA + ":" + captchaId;
         return (String) redisHelper.get(key);
     }
 
     @Override
     public void del(String captchaId) {
-        String key = AppConstants.CAPTCHA_REDIS_KEY_PREFIX + ":" + captchaId;
+        String key = AppConstants.REDIS_KEY_PREFIX_CAPTCHA + ":" + captchaId;
         redisHelper.del(key);
     }
 }

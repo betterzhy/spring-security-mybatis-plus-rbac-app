@@ -5,7 +5,7 @@ package com.zhy.util;
  */
 public interface AppConstants {
     // 验证码
-    String CAPTCHA_REDIS_KEY_PREFIX = "APP:CAPTCHA";
+    String REDIS_KEY_PREFIX_CAPTCHA = "APP:CAPTCHA";
     // 用户信息
     String REDIS_KEY_PREFIX_USER = "APP:USER";
 
