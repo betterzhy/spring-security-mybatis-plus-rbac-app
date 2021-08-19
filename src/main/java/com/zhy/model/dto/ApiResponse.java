@@ -1,10 +1,13 @@
 package com.zhy.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 
 /**
  * @author zhy
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> implements Serializable {
     private boolean success;
     private Integer code;
@@ -16,6 +19,10 @@ public class ApiResponse<T> implements Serializable {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public static <T> ApiResponse<T> ok() {
+        return new ApiResponse<>(true, ResponseCode.OK, null, null);
     }
 
     public static <T> ApiResponse<T> ok(String message) {
