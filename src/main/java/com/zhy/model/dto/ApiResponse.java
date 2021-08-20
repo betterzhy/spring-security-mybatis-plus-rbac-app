@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 /**
+ * 统一接口返回
+ *
  * @author zhy
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -45,6 +47,10 @@ public class ApiResponse<T> implements Serializable {
         return new ApiResponse<>(false, ResponseCode.FORBIDDEN, message, null);
     }
 
+    public static <T> ApiResponse<T> error(String message) {
+        return new ApiResponse<>(false, ResponseCode.ERROR, message, null);
+    }
+
     public boolean isSuccess() {
         return success;
     }
@@ -79,8 +85,9 @@ public class ApiResponse<T> implements Serializable {
 }
 
 interface ResponseCode {
-    int OK = 200;
-    int BAD = 500;
-    int UNAUTHORIZED = 401;
-    int FORBIDDEN = 403;
+    int OK = 200; // 请求处理成功
+    int BAD = 400; // 请求处理失败
+    int UNAUTHORIZED = 401; // 请求未认证
+    int FORBIDDEN = 403; // 请求未授权
+    int ERROR = 500; // 严重或未知错误
 }

@@ -4,7 +4,6 @@ package com.zhy.exception;
 import com.zhy.model.dto.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -24,6 +23,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ApiException.class)
     public ApiResponse<?> handle(ApiException e) {
+        LOGGER.warn(e.getMessage());
         return ApiResponse.bad(e.getMessage());
     }
 
@@ -59,5 +59,15 @@ public class GlobalExceptionHandler {
             }
         }
         return ApiResponse.bad(message);
+    }
+
+    /**
+     * Exception异常处理
+     */
+    @ExceptionHandler(value = Exception.class)
+    public ApiResponse<?> handle(Exception e) {
+        LOGGER.error(e.getMessage());
+        e.printStackTrace();
+        return ApiResponse.bad(e.getMessage());
     }
 }
